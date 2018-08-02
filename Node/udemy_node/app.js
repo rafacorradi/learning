@@ -4,9 +4,9 @@
 
 var server = require('./config/server.js');
 
-var routesHome = require('./app/routes/home.js')(server);
-var routesNoticias = require('./app/routes/noticias.js')(server);
-var routesIncluirNoticias = require('./app/routes/formulario_inclusao_noticia')(server);
+// var routesHome = require('./app/routes/home.js')(server);
+// var routesNoticias = require('./app/routes/noticias.js')(server);
+// var routesIncluirNoticias = require('./app/routes/formulario_inclusao_noticia')(server);
 
 server.listen(3000, function () {
     console.log('Servidor rodando com Express');
