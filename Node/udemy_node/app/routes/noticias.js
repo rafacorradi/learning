@@ -9,7 +9,6 @@ module.exports = function (server) {
         });
 
         conection.query('select * from noticias', function (error, result) {
-            console.log('Error => ', error)
             res.send(result);
         });
     
