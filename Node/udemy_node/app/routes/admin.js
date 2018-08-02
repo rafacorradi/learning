@@ -5,6 +5,12 @@ module.exports = function (server) {
 
     server.post('/noticias/salvar', function (req, res) {
         var noticias = req.body;
-        res.send(noticias);
+
+        var connection = server.config.dbConnection();
+        var databaseComunication = new server.app.models.DatabaseComunication(connection);
+
+        databaseComunication.insertData(noticias, function (error, result) {
+            res.redirect('/noticias');
+        });
     });
 }
