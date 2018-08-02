@@ -1,7 +1,9 @@
 module.exports = function (server) {
     server.get('/noticias', function (req, res) {
-        var conection = server.config.dbConnection();
-        conection.query('select * from noticias', function (error, result) {
+        var connection = server.config.dbConnection();
+        var noticiasModel = server.app.models.noticiasModel;
+
+        noticiasModel.getData(connection, 'select * from noticias', function (error, result) {
             res.render('noticias/noticias.ejs', {noticias: result});
         });
     });
