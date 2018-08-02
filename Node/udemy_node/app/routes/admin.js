@@ -4,7 +4,23 @@ module.exports = function (server) {
     });
 
     server.post('/noticias/salvar', function (req, res) {
+        debugger;
         var noticias = req.body;
+
+        console.log(noticias);
+        req.assert('titulo', 'Título é obrigatório').notEmpty();
+        req.assert('resumo', 'Resumo é obrigatório').notEmpty();
+        req.assert('resumo', 'Resumo deve conter entre 10 e 100 caracteres').len(10, 100);
+        req.assert('autor', 'Autor é obrigatório').notEmpty();
+        req.assert('data_noticia', 'Data é obrigatório').notEmpty();
+        req.assert('noticia', 'Notícia é obrigatório').notEmpty();
+
+        var errors = req.validationErrors();
+
+        if (errors) {
+            res.render('admin/form_add_noticia.ejs');
+            return;
+        }
 
         var connection = server.config.dbConnection();
         var databaseComunication = new server.app.models.DatabaseComunication(connection);
