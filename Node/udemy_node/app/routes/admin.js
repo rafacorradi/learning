@@ -4,7 +4,6 @@ module.exports = function (server) {
     });
 
     server.post('/noticias/salvar', function (req, res) {
-        debugger;
         var noticias = req.body;
 
         console.log(noticias);
